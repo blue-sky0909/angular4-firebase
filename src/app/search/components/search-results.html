@@ -1,0 +1,506 @@
+<section class="secondary-content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 sec-nav">
+                <div class="c-layout-sidebar-menu c-theme ">
+                    <!-- BEGIN: LAYOUT/SIDEBARS/SHOP-SIDEBAR-DASHBOARD -->
+                    <div class="c-sidebar-menu-toggler">
+                        <h3 class="c-title c-font-uppercase c-font-bold">Filters</h3>
+                        <a href="javascript:;" class="c-content-toggler" data-toggle="collapse" data-target="#sidebar-menu-1">
+                            <span class="c-line"></span>
+                            <span class="c-line"></span>
+                            <span class="c-line"></span>
+                        </a>
+                    </div>
+                    <div class="c-sidebar-menu collapse " id="sidebar-menu-1" style="border:0px;">
+
+                        <h4>Search Criteria:</h4>
+
+                        <div class="panel-group">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" href="#title" aria-expanded="true" class="collapse">
+                                            Title/Keywords
+                                            <span class="pull-right">
+                                                <span class="fa fa-chevron-down"></span>
+                                            </span>
+                                        </a>
+                                    </h5>
+
+                                </div>
+                                <div id="title" class="panel-collapse collapse in show" aria-expanded="true">
+                                    <div class="panel-body">
+
+                                        <div class="input-group">
+                                            <input [(ngModel)]="searchTerm" (keyup.enter)="addSearch()" class="form-control" style="background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%;" autocomplete="off">
+                                            <span class="input-group-btn">
+                                                <a class="btn btn-default" (click)="addSearch()">
+                                                    <span class="fa fa-search"></span>
+                                                    <span class="sr-only">Search</span>
+                                                </a>
+                                            </span>
+                                        </div>
+
+                                        <div class="pull-right c-margin-t-15">
+                                            <a class="btn btn-primary btn-sm" (click)="addSearch()">
+                                                <span class="fa fa-plus"></span>
+                                                Add to Filters
+                                            </a>
+                                        </div>
+
+                                        <div style="clear:both"></div>
+
+                                    </div>
+                                </div>
+                            </div><!-- end title/keyword panel -->
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" class="collapsed" href="#location" aria-expanded="false">
+                                            Location
+                                            <span class="pull-right">
+                                                <span class="fa fa-chevron-down"></span>
+                                            </span>
+                                        </a>
+                                    </h5>
+
+                                </div>
+                                <div id="location" class="panel-collapse collapse" aria-expanded="false" style="height: 0px;">
+                                    <div class="panel-body">
+
+                                        <label>Location</label>
+                                        <input type="text" class="form-control" [(ngModel)]="search.location.address" placeholder="City, ST (Roy, UT)" (keyup.enter)="updateLocation()" />
+
+                                        <label>Distance</label>
+                                        <div>
+                                            <table style="width:100%;">
+                                                <tr>
+                                                    <td style="padding-right:5px;width:65%;">
+                                                        <select [(ngModel)]="search.location.rangeNum" class="form-control" >
+                                                            <option value="40">40</option>
+                                                            <option value="100">100</option>
+                                                            <option value="200">200</option>
+                                                            <option value="500">500</option>
+                                                        </select>
+                                                    </td>
+                                                    <td>
+                                                        <select [(ngModel)]="search.location.rangeType" class="form-control" >
+                                                            <option value="mi" selected>MI</option>
+                                                            <option value="km">KM</option>
+                                                        </select>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </div>
+
+
+                                        <div class="pull-right c-margin-t-15">
+                                            <a class="btn btn-primary btn-sm" (click)="updateLocation()">
+                                                <span class="fa fa-plus"></span>
+                                                Add to Filters
+                                            </a>
+                                        </div>
+
+                                        <div style="clear:both"></div>
+
+                                    </div>
+                                </div>
+                            </div><!-- end locaion panel -->
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" class="collapsed" href="#date">
+                                            Date
+                                            <span class="pull-right">
+                                                <span class="fa fa-chevron-down"></span>
+                                            </span>
+                                        </a>
+                                    </h5>
+
+                                </div>
+
+                                <div id="date" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <div>
+                                            <label>From</label><br />
+                                            <input  placeholder="yyyy-mm-dd"
+                                               (click)="d1.toggle();"
+                                                    (change)="validateDate();"
+                                               name="dp" [(ngModel)]="startDateNew"  ngbDatepicker #d1="ngbDatepicker">
+                                            <span class="fa fa-calendar"   (click)="d1.toggle();" >
+                                            </span>
+                                        </div>
+                                        <div *ngIf="!validStartDate" class="validation-error-text">
+                                            Start date can't be past
+                                        </div>
+                                        <br />
+                                        <div>
+                                            <label>To</label><br />
+                                            <input  placeholder="yyyy-mm-dd"
+                                                    (click)="d2.toggle();"
+                                                    (change)="validateDate();"
+                                                    name="dp" [(ngModel)]="endDateNew" ngbDatepicker #d2="ngbDatepicker">
+                                            <span class="fa fa-calendar" (click)="d2.toggle() "></span>
+                                        </div>
+
+                                        <div *ngIf="!validEndDate" class="validation-error-text">
+                                            Invalid date range
+                                        </div>
+
+
+                                        <div class="pull-right c-margin-t-15">
+                                            <a class="btn btn-primary btn-sm" (click)="updateDate()">
+                                                <span class="fa fa-plus"></span>
+                                                Add to Filters
+                                            </a>
+                                        </div>
+
+                                        <div style="clear:both"></div>
+
+                                        <!--  REFERENCE: http://eonasdan.github.io/bootstrap-datetimepicker/ -->
+
+
+                                    </div>
+                                </div>
+                            </div><!-- end date panel panel -->
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" class="collapsed" href="#category">
+                                            Categories
+                                            <span class="pull-right">
+                                                <span class="fa fa-chevron-down"></span>
+                                            </span>
+                                        </a>
+                                    </h5>
+
+                                </div>
+                                <div id="category" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+
+                                                <select class="form-control" [(ngModel)]="category">
+                                                    <option value="intro">Product Training</option>
+                                                    <option value="business">Business Training</option>
+                                                    <option value="corporate">Corporate Events</option>
+                                                    <option value="diamond">Diamond Club</option>
+                                                    <option value="aromatic">Aromatouch Certification</option>
+                                                    <option value="international">International</option>
+                                                    <option value="personal">Personal Development</option>
+                                                    <option value="online">Online Events</option>
+
+                                                    <!--
+                                                    <option value="retreats">Retreats &amp; Bootcamps</option>
+                                                    <option value="intro">Intro Classes</option>
+                                                    <option value="essential">Essential Wellness</option>
+                                                    <option value="international">International</option>
+                                                    <option value="corporate">Corporate Events</option>
+                                                    <option value="diamond">Diamond Club</option>
+                                                    <option value="business">Business Training</option>
+                                                    <option value="specialty">Specialty Oil Classes</option>
+                                                    <option value="skin">Skin &amp; Body Care</option>
+                                                    <option value="aromatic">Aromatic Certificate</option>
+                                                    <option value="personal">Personal Development</option>
+                                                    <option value="online">Online Events</option>
+                                                    -->
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right c-margin-t-15">
+                                            <button class="btn btn-primary btn-sm" (click)="addCategory()">
+                                                <span class="fa fa-plus"></span>
+                                                Add to Filters
+                                            </button>
+                                        </div>
+
+                                        <div style="clear:both"></div>
+
+                                    </div>
+                                </div>
+                            </div><!-- end category panel -->
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" class="collapsed" href="#creator">
+                                            Creator
+                                            <span class="pull-right">
+                                                <span class="fa fa-chevron-down"></span>
+                                            </span>
+                                        </a>
+                                    </h5>
+
+                                </div>
+                                <div id="creator" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <input [(ngModel)]="creator"  class="form-control" autocomplete="off">
+                                                <!--
+                                                <span class="twitter-typeahead" style="position: relative; display: inline-block;">
+                                                    <input class="form-control tt-hint" readonly="" autocomplete="off" spellcheck="false" tabindex="-1" dir="ltr" style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; opacity: 1; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                                    <input id="names" class="form-control tt-input" autocomplete="off" spellcheck="false" dir="auto" style="position: relative; vertical-align: top; background-color: transparent;">
+                                                    <pre aria-hidden="true" style="position: absolute; visibility: hidden; white-space: pre; font-family: &quot;Roboto Condensed&quot;, sans-serif; font-size: 14px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 300; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><div class="tt-menu" style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;">
+                                                    <div class="tt-dataset tt-dataset-names">
+
+                                                    </div></div></span>
+                                                 -->
+                                            </div>
+                                        </div>
+                                        <div class="pull-right c-margin-t-15">
+                                            <button class="btn btn-primary btn-sm" (click)="addCreator()">
+                                                <span class="fa fa-plus"></span>
+                                                Add to Filters
+                                            </button>
+                                        </div>
+
+                                        <div style="clear:both"></div>
+
+                                    </div>
+                                </div>
+                            </div><!-- end creator panel -->
+
+                          <!-- <div class="panel panel-default">
+                              <div class="panel-heading">
+
+                                  <h5 class="panel-title">
+                                      <a data-toggle="collapse" class="collapsed" href="#type">
+                                          Type
+                                          <span class="pull-right">
+                                              <span class="fa fa-chevron-down"></span>
+                                          </span>
+                                      </a>
+                                  </h5>
+
+                              </div>
+                              <div id="type" class="panel-collapse collapse">
+                                  <div class="panel-body">
+
+                                      <div class="row">
+                                          <div class="col-sm-12">
+                                              <select class="form-control">
+                                                  <option selected="">
+                                                      Local
+                                                  </option>
+                                                  <option>
+                                                      Online
+                                                  </option>
+                                              </select>
+                                          </div>
+                                      </div>
+                                      <div class="pull-right c-margin-t-15">
+                                          <button class="btn btn-primary btn-sm">
+                                              <span class="fa fa-plus"></span>
+                                              Add to Filters
+                                          </button>
+                                      </div>
+
+                                      <div style="clear:both"></div>
+
+                                  </div>
+                              </div>
+                          </div><!-- end type panel -->
+
+                            <!-- <div class="panel panel-default">
+                                <div class="panel-heading">
+
+                                    <h5 class="panel-title">
+                                        <a data-toggle="collapse" class="collapsed" href="#price">
+                                            Price
+                                            <span class="pull-right">
+                                                <span class="fa fa-chevron-down"></span>
+                                            </span>
+                                        </a>
+                                    </h5>
+
+                                </div>
+                                <div id="price" class="panel-collapse collapse">
+                                    <div class="panel-body">
+
+                                        <div class="row">
+                                            <div class="col-sm-12">
+                                                <select class="form-control">
+                                                    <option>
+                                                        Free
+                                                    </option>
+                                                    <option>
+                                                        &gt; $10
+                                                    </option>
+                                                    <option>
+                                                        &gt; $25
+                                                    </option>
+                                                    <option>
+                                                        &gt; $50
+                                                    </option>
+                                                    <option>
+                                                        &gt; $100
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="pull-right c-margin-t-15">
+                                            <button class="btn btn-primary btn-sm">
+                                                <span class="fa fa-plus"></span>
+                                                Add to Filters
+                                            </button>
+                                        </div>
+
+                                        <div style="clear:both"></div>
+
+                                    </div>
+                                </div>
+                            </div><!-- end price panel -->
+
+                        </div>
+                    </div>
+                    <!-- END: LAYOUT/SIDEBARS/SHOP-SIDEBAR-DASHBOARD -->
+                </div>
+            </div>
+
+            <div class="col-md-9 sec-main">
+
+                <h3 class="line">
+                    Search Events
+                </h3>
+
+                <div class="filters row">
+                    <div class="col-sm-1">
+                        <div class="bring-down">
+                            <label>Filters:</label>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-11">
+                        <o-chip-container>
+
+                            <o-chip *ngIf="search.searchSet"
+                                    [chipTitle]="'Title/Keywords'"
+                                    [chipText]="search.search"
+                                    [chipIndex]="0"
+                                    (delete)="removeSearch()"></o-chip>
+
+                            <o-chip *ngIf="search.locationSet"
+                                    [chipTitle]="'Location'"
+                                    [chipText]="search.location.text + ' (within ' + search.location.range +')' "
+                                    [chipIndex]="0"
+                                    (delete)="removeLocation()"></o-chip>
+
+                            <o-chip *ngIf="search.startDateSet"
+                                    [chipTitle]="'After'"
+                                    [chipText]="displayStartDate"
+                                    [chipIndex]="0"
+                                    (delete)="removeStartDate()"></o-chip>
+
+                            <o-chip *ngIf="search.endDateSet"
+                                    [chipTitle]="'Before'"
+                                    [chipText]="displayEndDate"
+                                    [chipIndex]="0"
+                                    (delete)="removeEndDate()"></o-chip>
+
+                            <o-chip
+                                    *ngIf="search.eventTypeSet"
+                                    [chipTitle]="'Event Type'"
+                                    [chipText]="search.eventType"
+                                    [chipIndex]="0"
+                                    (delete)="removeEventType()"></o-chip>
+
+                            <o-chip
+                                    *ngIf="search.priceSet"
+                                    [chipTitle]="'Price'"
+                                    [chipText]="search.price"
+                                    [chipIndex]="0"
+                                    (delete)="removePrice()"></o-chip>
+
+                            <o-chip
+                                    *ngFor="let category of search.categories; let i = index"
+                                    [chipTitle]="'Category'"
+                                    [chipText]="category"
+                                    [chipIndex]="i"
+                                    (delete)="removeCategory(i)"></o-chip>
+
+                            <o-chip
+                                    *ngFor="let creator of search.creators; let i = index"
+                                    [chipTitle]="'Creator'"
+                                    [chipText]="creator"
+                                    [chipIndex]="i"
+                                    (delete)="removeCreator(i)"></o-chip>
+
+
+                        </o-chip-container>
+                    </div>
+
+
+
+                </div>
+
+                <hr>
+
+                <h5>
+                    Search Results
+
+                    <a (click)="makeHorizontal()" [ngClass]="{'selected':verticalCard == false}">
+                        <span class="fa fa-align-justify" title="list view"></span>
+                    </a>
+
+                    <a (click)="makeVertical()" [ngClass]="{'selected':verticalCard == true}">
+                        <span class="fa fa-th-large" title="card view"></span>
+                    </a>
+
+                </h5>
+
+                <h2 *ngIf="showNoResults" style="margin:50px 0;font-size:35px;">
+                    No Results
+                </h2>
+
+
+                <div style="min-height:350px" *ngIf="verticalCard">
+                    <div *ngIf="!showNoResults" class="row">
+                        <div class="col-lg-4 col-sm-6" *ngFor="let event of searchResults">
+                            <vertical-card [id]="event.$key"></vertical-card>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="min-height:350px;" *ngIf="!verticalCard">
+                    <div *ngIf="!showNoResults">
+                        <horizontal-card *ngFor="let event of searchResults" [id]="event.$key"></horizontal-card>
+                    </div>
+                </div>
+
+                <!-- <o-page
+                    *ngIf="pagination.results"
+                    (pageChange)="changePage($event)"
+                    [(collectionSize)]="pagination.collectionSize"
+                    [(pageSize)]="pagination.pageSize"
+                    [(currentPage)]="pagination.currentPage"></o-page> -->
+                <ngb-pagination
+                        [collectionSize]="pagination.collectionSize"
+                        [(page)]="pagination.currentPage"
+                        [pageSize]="10"
+                        [maxSize]="5"
+                        [rotate]="true"
+                        [ellipses]="true"
+                        [boundaryLinks]="true"
+                        (pageChange)="changePage($event)"
+                        ></ngb-pagination>
+
+            </div><!-- .col-md-9 -->
+        </div><!-- .row -->
+    </div><!-- .container -->
+
+</section>

@@ -1,0 +1,29 @@
+<section class="secondary-content">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="line">Admin</h3>
+            </div>
+            <div>
+                <label>Default Event Images</label>
+                <div *ngIf="imgSrcs.length" [dragula]="img-wrapper" [dragulaModel]='imgSrcs' >
+                    <div *ngFor="let path of imgSrcs" class="image-row col-md-3 no-padding">
+                        <div class="padding-view" id="eachdiv">
+                            <img id="default" class="image-item img-fluid" [src]="path.url" alt="default" draggable="true"/>
+                            <i class="fa fa-times fa-lg delete-button" aria-hidden="true" (click)="deletePhoto(path)"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div *ngIf="imgSrcs.length == 0" class="empty-view">
+                <p>There is no default image yet</p>
+            </div>
+            <span class="btn btn-primary btn-lg btn-file margin-vertical">
+                Upload Photo <input (change)="fileChangeListener($event)" type="file">
+            </span>
+        </div>
+    </div>
+
+</section>

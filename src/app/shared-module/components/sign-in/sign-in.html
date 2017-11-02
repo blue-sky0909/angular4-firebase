@@ -1,0 +1,72 @@
+<div ngbModalContainer>
+    <div class="modal-body">
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()" style="margin:10px 15px;"><span aria-hidden="true">×</span></button>
+        <div *ngIf="!showSignIn">
+            <form #signinForm="ngForm" (ngSubmit)="onSubmit(signinForm)">
+                <div [ngClass]="{'form-group': true }">
+                    <h3 class="line">Login</h3>
+                    <label>
+                        Email
+                    </label>
+                    <input 
+                        class="form-control" 
+                        type="email" 
+                        ngModel="" 
+                        name="email" 
+                        #email="ngModel" 
+                        required                    
+                        pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+                    >
+                    <div *ngIf="email.errors && (email.touched || email.dirty)" class="validation-error-text">
+                        Valid email is required.
+                    </div>   
+                </div>
+                <div [ngClass]="{'form-group': true }">
+                    <label>
+                        Password
+                    </label>
+                    <input 
+                        ngModel="" 
+                        name="password" 
+                        class="form-control" 
+                        type="password" 
+                        style="background-image: url(&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAASCAYAAABSO15qAAAAAXNSR0IArs4c6QAAAXFJREFUOBGVVDGKwkAUfZHFaBBS2riQSrC18QJpAvbeYAVbD6DxFm4TELyA1R7BKmUgjRa7pAwELKKF2XljEuMSN/HDZOb//96b+X+GKLZtW0mSrMV4Rw1TFOVbwD6Wy+UX4Y1XyCSkG31yTaNArZ1v8Nu3yGkUE1VrTdPQ7/cfYC8JGIYB0zTLBVqtVp5QVRWiWblfzOXBdPHGeTweYzgcYrvdIgxDzGYzBEEAx3Eecn/J9F8qoUxAWSwWCRM8ZhzHEsMSzudzGT6PiRJ/hDPNT5CRiagiEyOusiemtewBA//ZZDLBYDDIIavVCtfrVYrUEmi324iiCPv9XoqQnFkjfduZXzpToNlsykdUJBNMgWmViO/78DwPuq7DsizwQWV2fy1ZJJ2z26Hb6XRwOp0wGo2kwG63g+u6ElmrB/P5XApQ6HK54HA4pNsATwV4z+lVYbPZoNvtys6zHDaURsxTAZFnb/ij6R2PR3AUjWRifgHmko6KAvVfRAAAAABJRU5ErkJggg==&quot;); background-repeat: no-repeat; background-attachment: scroll; background-size: 16px 18px; background-position: 98% 50%; cursor: auto;"
+                        autocomplete="off"
+                        #password="ngModel" 
+                        required>
+                    <div *ngIf="password.errors && (password.touched || password.dirty)" class="validation-error-text">
+                        Password is required.
+                    </div>                          
+                </div>
+
+                <div class="error-text login-error" *ngIf="error">
+                    {{ errorMessage }}
+                </div>
+
+                <div class="c-checkbox">
+                    <!--
+                    <input type="checkbox" id="login-rememberme" class="c-check">
+                    <label for="login-rememberme" class="c-font-thin c-font-17">
+                        <span class="inc"></span>
+                        <span class="check"></span>
+                        <span class="box"></span> Remember Me
+                    </label>
+                    -->
+                    <a (click)="forgotPass()" class="pull-right">Forgot Password?</a>
+                </div>
+                <div>
+                </div>
+                <div class="login-btn-wrapper">
+                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                </div>
+                <!-- <hr />
+                <button class="btn btn-default btn-block" (click)="signInWithGoogle()"><i class="fa fa-google-plus-square"></i> Sign in with Google</button>
+                -->
+                <hr /> New to ōevent? <a (click)="join()">Join Now</a>
+            </form>
+        </div>
+        <div *ngIf="showSignIn">
+            <h3>Sign in Successful</h3>
+        </div>
+    </div>
+</div>

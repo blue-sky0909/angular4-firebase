@@ -1,0 +1,40 @@
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
+import {FollowingOverviewComponent} from "./components/overview.component";
+import {MyFollowersComponent} from "./components/my-followers.component";
+import {DiscoverComponent} from "./components/discover.component";
+import {FollowingComponent} from "./components/follows.component";
+import {FollowingService} from "../shared-module/services/following.service";
+import {FollowingPerson} from "./components/_person.component";
+import {AuthGuard} from "../auth/guards/auth-guard";
+
+const routes: Routes = [
+    {path: '', component: FollowingOverviewComponent},
+    {path: 'follows', component: FollowingComponent},
+    {path: 'followers', component: MyFollowersComponent},
+    {path: 'discover', component: DiscoverComponent}
+];
+
+@NgModule({
+
+    declarations: [
+        FollowingOverviewComponent,
+        MyFollowersComponent,
+        DiscoverComponent,
+        FollowingOverviewComponent,
+        FollowingComponent,
+        FollowingPerson
+    ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        RouterModule.forChild(routes)
+    ]
+
+})
+
+export class FollowingModule {}
+
+export { };

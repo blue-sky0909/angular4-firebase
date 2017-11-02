@@ -1,0 +1,60 @@
+<div class="row" *ngIf="createService.draftSet">
+
+    <div class="col-md-12">
+        <h4 class="round-heading" style="margin-top:20px;"><span>1</span> Basic Information</h4>
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-group padding-vertical-sm" style="padding-bottom:0px;">
+            <event-title (eventTitle)="updateTitle($event)"></event-title>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="form-group">
+            <event-date (draftDate)="updateDate($event)" (initial)="initialDate($event)"></event-date>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-lg-3">
+        <event-type (types)="updateType($event)"></event-type>
+    </div>
+    <div class="col-md-8 col-lg-9">
+        <google-location (updatedLocation)="updateLocation($event)"></google-location>
+    </div>
+
+    <div class="col-md-12">
+        <div class="padding-vertical">
+            <event-image (imagePath)="updateImage($event)"></event-image>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <event-description (updateDes)="updateDescription($event)"></event-description>
+    </div>
+
+    <div class="col-md-12">
+        <h4 class="round-heading"><span>2</span> Event Settings</h4>
+    </div>
+
+    <div class="col-md-12">
+        <event-settings (updateCat)="updateCategory($event)" (updateKeywords)="updateKeyword($event)" (updateVisibility)="updateVisible($event)" 
+        (updateRemainTickets)="updateRemainTicket($event)" (updateAttendies)="updateAttendie($event)"></event-settings>
+    </div>
+
+    <div class="col-md-12">
+        <h4 class="round-heading"><span>3</span> Manage Tickets</h4>
+    </div>
+
+    <div class="col-md-12">
+        <event-tickets (ticketUpdated)="updateTicket($event)" (deleteTicket)="updateDeleteTickets($event)"></event-tickets>
+    </div>
+
+    <div class="col-md-12">
+        <div class="padding-vertical" style="padding-top:120px;">
+            <event-controls (saved)="saveDraft($event)" (published)="publish($event)" (UpdateLive)="updateLiveEvent()"></event-controls>
+        </div>
+    </div>
+
+
+</div>

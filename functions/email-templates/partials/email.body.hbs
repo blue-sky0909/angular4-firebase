@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Oevent</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
+
+  </head>
+  <body >
+    <table style="background:#f0f0f0;width:100%;text-align:center;padding:0;margin:0 auto;">
+		<tr>
+			<td>
+				<table style="width:520px;text-align:center;padding:0;margin:0 auto;">
+					<tr>
+						<td style="padding:0 0 10px;">
+							<table style="margin:0 auto; padding:0 10px;border:1px solid #32c1d6;width:490px;background:#fff;">
+								<tr>
+									<td style="text-align:center; font-family:'Roboto';lette-sapcing:0.2em; padding:40px 0 0; font-size:24px;color:#333;line-height:100%;font-weight:400;">Hey <strong style="font-weight:700;">Nick,</strong></td>
+								</tr>
+								<tr>
+									<td style="text-align:center; vertical-align:middle;padding:0 0 8px;">
+										<img src="https://firebasestorage.googleapis.com/v0/b/oevent-982b8.appspot.com/o/emailAssets%2Fballoon.png?alt=media&token=fd875cb6-f63d-4443-8ba1-72ab75c5760d" alt="" />
+										<span style="padding:0 10px;font-family:'Roboto';font-size:27px;color:#333;text-decoration:none; line-height:60px;     vertical-align: top; text-transform:uppercase;font-weight:400;">YOU’RE INVITED!</span>
+										<img src="https://firebasestorage.googleapis.com/v0/b/oevent-982b8.appspot.com/o/emailAssets%2Fmans.png?alt=media&token=acd983a3-c73f-4466-8679-95635d15bfdc" alt="" />
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align:center;padding:0 0 20px;">
+										<em style="font-family:'Roboto';font-size:18px;color:#333;font-weight:400; display:block;padding:0 0 10px;">Please join us at my upcoming event:</em>
+										<strong style="font-family:'Roboto';font-size:24px;color:#32c1d6;font-weight:700; display:block;text-transform:uppercase "> {{eventTitle}} </strong>
+									</td>
+								</tr>
+								<tr>
+									<td style="text-align:center;">
+										<a href="{{eventURL}}" style="width:290px;padding:12px;border:2px solid #32c1d6; font-size:22px;font-weight:400;line-height:28px; text-align:center;font-family:'Roboto';margin:0 auto; text-decoration:none;display:block; color:#32c1d6;"> Attend event</a>
+									</td>
+								</tr>
+								<tr>
+									<td style="padding:30px 0;vertical-align:middle;">
+										<span style="width:34px;height:3px;background:#32c1d6;margin:0 auto;display:block;"></span>
+									</td>
+								</tr>
+								<tr>
+									<td><img src="{{eventImageURL}}" alt="" /></td>
+								</tr>
+								<tr>
+									<td>
+										<table style="width:492px;padding:20px 25px 30px;text-align:left;">
+											<tr>
+												<td style="font-family:'Roboto';font-weight:400;line-height:21px;color:#333;font-size:18px; padding:0 0 20px;">
+													The event will be held on <strong> {{eventDate}}</strong> <br/> from <strong> {{eventTime}}, </strong> and will be found <br/> at the following address:
+												</td>
+											</tr>
+											<tr>
+												<td style="font-family:'Roboto';font-weight:400;line-height:24px;color:#32c1d6;font-size:18px;">
+													{{eventAddress}}
+												</td>
+											</tr>
+											<tr>
+												<td style="padding:30px 0;vertical-align:middle;">
+													<span style="width:34px;height:3px;background:#32c1d6;margin:0 auto;display:block;"></span>
+												</td>
+											</tr>
+											<tr>
+												<td style="font-family:'Roboto';font-weight:400;line-height:22px;color:#333;font-size:18px;">
+												 {{customMessage}}
+												</td>
+											</tr>
+											<tr>
+												<td style="font-family:'Roboto';font-weight:400;line-height:22px;color:#333;font-size:18px;padding:15px 0;">
+													Looking forward to seeing you there!
+												</td>
+											</tr>
+											<tr>
+												<td style="font-family:'Roboto';font-weight:400;line-height:22px;color:#333;font-size:18px; padding:0 0 30px;">
+													{{eventOrganizerName}} <em style="display:block;">Event Organizer</em>
+												</td>
+											</tr>
+											<tr>
+												<td style="text-align:center;">
+													<a href="{{eventURL}}" style="width:290px;padding:12px;background:#32c1d6; font-size:22px;font-weight:400;line-height:28px; text-align:center;font-family:'Roboto';margin:0 auto; text-decoration:none;display:block; color:#fff;"> Attend event</a>
+												</td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td style="vertical-align:top;">
+							<table style="width:100%;">
+								<tr>
+									<td style="font-family:'Roboto';font-size:14px;color:#666; line-height:16px;text-align:left;vertical-align:top;">
+										<span style="padding:0 0 8px;"> This email was sent to <a href="" style="color:#32c1d6;text-decoration:none;" > {{recipientEmail}} from</a> <br/> <a href="" style="color:#32c1d6;text-decoration:none;"> {{eventOrganizerName}},</a> the event organizer.</span>
+										<!-- <span> To stop receiving emails from this organizer, you can <br/> <a href="" style="color:#32c1d6;text-decoration:none;"> unsubscribe </a>.</span> -->
+									</td>
+									<td style="vertical-align:top; text-align:right;"><a href="https://oevent.com"><img src="https://firebasestorage.googleapis.com/v0/b/oevent-982b8.appspot.com/o/emailAssets%2Flogo.png?alt=media&token=4c702172-f510-41ab-8644-60dfb851e60c" alt="oevent" /></a></td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+
+				</table>
+			</td>
+		</tr>
+	</table>
+  </body>
+</html>

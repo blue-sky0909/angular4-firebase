@@ -1,0 +1,49 @@
+agm-map {
+  height: 300px;
+  width:100%;
+}
+.c-title.responsive{
+  display: none;
+}
+
+// responsive code 05-10
+@media (min-width:320px) and (max-width:567px) {
+  .c-content-blog-post-1-list, .c-content-blog-post-1-view{
+    padding-right: 0;
+  }
+  .c-title.large-screen{
+    display: none;
+  }
+  .c-title.responsive{
+    display: block;
+    margin: 0;
+    padding-top: 0;
+    font-size: 22px;
+    float: left;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+  .c-title.responsive{
+    .btn{
+      margin-top: 25px;
+      width: 100%;
+    }
+  }
+  .c-panel{
+    float: left;
+    width: 100%;
+    .c-author{
+      width: 43%;
+      text-align: right;
+    }
+    .c-date{
+      width: 45%;
+      text-align: left;
+    }
+    .pull-right{
+      width: 100%;
+      text-align: center;
+      font-size: 14px;
+    }
+  }
+}

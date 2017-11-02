@@ -1,0 +1,80 @@
+
+<div ngbModalContainer>
+    <div class="modal-body">
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()" style="margin:10px 15px;"><span aria-hidden="true">×</span></button>
+
+        <div [ngClass]="{'form-group': true, 'has-error': errors['email'].state }">
+            <h3 class="line">JOIN ŌEVENT</h3>
+            <label>
+                Email
+            </label>
+            <input class="form-control" type="text" [(ngModel)]="email" ngModel required (keyup.enter)="registerWithEmail()">
+            <span class="error-text">
+                    {{ errors['email'].message }}
+            </span>
+        </div>
+        <div [ngClass]="{'form-group': true, 'has-error': errors['password'].state }" >
+            <label>
+                Password
+            </label>
+            <input [(ngModel)]="password" class="form-control" type="password"  (keyup.enter)="registerWithEmail()" autocomplete="off">
+            <span class="error-text">
+                {{ errors['password'].message }}
+            </span>
+        </div>
+
+        <hr />
+
+        <div class="row form-group">
+            <div class="col-6" [ngClass]="{'has-error': errors['first'].state }">
+                <label>First Name</label>
+                <input [(ngModel)]="first" class="form-control" type="text" (keyup.enter)="registerWithEmail()" />
+                <span class="error-text">
+                    {{ errors['first'].message }}
+                </span>
+            </div>
+            <div class="col-6" [ngClass]="{'has-error': errors['last'].state }">
+                <label>Last Name</label>
+                <input [(ngModel)]="last" class="form-control" type="text" (keyup.enter)="registerWithEmail()" />
+                <span class="error-text">
+                    {{ errors['last'].message }}
+                </span>
+            </div>
+        </div>
+        <div [ngClass]="{'form-group': true, 'has-error': errors['timeZone'].state }">
+            <label>Time Zone</label>
+            <timezone-select
+                    [(timeZone)]="timeZone"
+                    [(ngModel)]="timeZone"
+            >
+            </timezone-select>
+            <span class="error-text">
+                {{ errors['timeZone'].message }}
+            </span>
+        </div>
+
+        <div class="error-text login-error" *ngIf="fbError">
+            {{ fbErrorMsg }}
+        </div>
+
+        <div class="login-btn-wrapper">
+            <button class="btn btn-primary btn-lg" (click)="registerWithEmail()">
+                Join Now
+            </button>
+        </div>
+        <!-- <hr />
+
+        <button class="btn btn-default btn-block" (click)="signInWithGoogle()"><i class="fa fa-google-plus-square"></i> Sign up with Google</button>
+        -->
+
+        <hr />
+
+            <div class="fine-print">
+                By signing up, I agree to ōevnt's <a href="#">terms of service</a>, <a href="#">privacy policy</a>, and <a href="#">cookie policy</a>
+            </div>
+        <hr />
+
+        Already have an ōevent login? <a (click)="login()">Login</a>
+
+    </div>
+</div>

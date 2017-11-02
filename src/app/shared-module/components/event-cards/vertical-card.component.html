@@ -1,0 +1,24 @@
+<div class="c-content-product-2 c-bg-white c-border margin-vertical" *ngIf="set">
+
+    <div class="c-content-overlay">
+        <div class="c-overlay-wrapper">
+            <div class="c-overlay-content">
+                <a (click)="gotoEvent()" class="btn btn-primary-outline">Event Info</a>
+            </div>
+        </div>
+        <div class="c-bg-img-center c-overlay-object" data-height="height" style="height: 230px;" [style.background-image]="'url(' + event.imagePath + ')'"></div>
+    </div>
+    <div class="c-info">
+        <p class="c-price c-font-12 c-font-slim">{{ event.date }} | {{ event.time }}</p>
+        <p class="c-title c-font-16 c-font-bold c-font-uppercase">{{ event.title }}</p>
+        <p class="c-price c-font-14 c-font-slim">{{ event.location }}</p>
+    </div>
+    <div class="btn-group btn-group-justified" role="group">
+        <div class="btn-group c-border-left c-border-top" [ngClass]="{'bookmarked':bookmarkSet}" role="group">
+            <a (click)="toggleBookmark()" class="btn btn-sm c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product"><i class="fa fa-bookmark-o"></i></a>
+        </div>
+        <!-- <div class="btn-group c-border-left c-border-top " role="group">
+            <a href="javascript:;" data-toggle="modal" data-target="#share-modal" class="btn btn-sm c-btn-white c-btn-uppercase c-btn-square c-font-grey-3 c-font-white-hover c-bg-red-2-hover c-btn-product"><i class="fa fa-share-square-o"></i></a>
+        </div> -->
+    </div>
+</div>

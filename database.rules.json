@@ -1,0 +1,193 @@
+{
+  "rules": {
+
+    //"about":{
+    //  "$uid":{
+    //    ".read":"true",
+    //    ".write":"$uid === auth.uid"
+    //  }
+    //},
+
+    "about":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "pending-notifications":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "defaultImages":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "admin":{
+      ".read":"true",
+      ".write":"false"
+    },
+
+    "featured":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "contact":{
+      ".read":"true",
+      ".write":"false",
+
+      "$uid":{
+        ".read":"true",
+        ".write":"$uid === auth.uid"
+      }
+    },
+
+    "socials":{
+      ".read":"true",
+      ".write":"false",
+
+      "$uid":{
+        ".read":"true",
+        ".write":"$uid === auth.uid"
+      }
+    },
+
+
+
+    //WILL NEED UPDATED
+    "bookmarks":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    //WILL NEED UPDATED
+    "events":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    //WILL NEED UPDATED
+    "marketing":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    //WILL NEED UPDATED
+    "messages":{
+      ".read":"true",
+      ".write":"true",
+      "emails":{
+        "pending":{
+          ".indexOn":"sendDateTime"
+        }
+      }
+    },
+
+    //WILL NEED UPDATED
+    "tickets":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "ocodes":{
+      ".read":"true",
+      "$ocode":{
+        ".read": "true",
+        //ALLOWS USER TO DELETE OCODE AND CREATE A NEW ONE
+        ".write": "!data.exists() || data.child('uid').val() === auth.uid"
+      }
+    },
+
+    //THIS WASN'T WORKING RIGHT FOR SOME REASON SO I OPENED IT UP FOR NOW
+    //"ocodesById":{
+    //  "$uid":{
+    //    ".read":"true",
+    //    ".write":"$uid === auth.uid"
+    //  }
+    //},
+
+    "ocodesById":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "follows":{
+      ".read":"true",
+      ".write":"true;"
+    },
+
+    "followers":{
+      ".read":"true",
+      ".write":"true;"
+    },
+
+    "preferences":{
+      "$uid":{
+        ".read":"$uid === auth.uid",
+        ".write":"$uid === auth.uid"
+      }
+    },
+
+    //THIS NEEDS SOME IN-DEPTH WORK SO BOTH PROMOTERS AND EVENT OWNERS CAN DELETE
+    "attending":{
+
+      ".read":"true",
+      ".write":"true"
+
+    },
+
+    //THIS NEEDS SOME IN-DEPTH WORK SO BOTH PROMOTERS AND EVENT OWNERS CAN DELETE
+    "promoters":{
+
+      ".read":"true",
+      ".write":"true"
+
+    },
+
+    "queries":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    //WILL NEED UPDATED
+    "registrations": {
+      ".read":"true",
+      ".write":"true"
+    },
+
+    //WILL NEED UPDATED
+    "membership": {
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "notification":{
+      ".read":"true",
+      ".write":"true"
+    },
+
+    //WILL NEED UPDATED
+    "payments": {
+      ".read":"true",
+      ".write":"true"
+    },
+
+    "drafts":{
+      ".read":"true",
+      ".write":"true",
+      "tickets":{
+        ".read":"true",
+        ".write":"true"
+      }
+    },
+
+    "errors":{
+      ".read":"true",
+      ".write":"true"
+    }
+
+
+
+  }
+}

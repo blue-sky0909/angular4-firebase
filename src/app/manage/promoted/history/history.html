@@ -1,0 +1,18 @@
+<div class="secondary-content">
+    <div class="container">
+        <div *ngIf="promotions.length == 0">
+            You haven't promoted any events yet!
+        </div>
+        <div *ngIf="promotions.length > 0">
+            <div class="row">
+                <div
+                class="col-sm-6"
+                manage-card
+                *ngFor="let event of promoteHistory"
+                [eventId]="event.$key"
+                [eventType]="'history'"></div>
+            </div>
+            <!-- <horizontal-card [id]="event.$key" *ngFor="let event of promotions"></horizontal-card> -->
+        </div>
+    </div><!-- end .container -->
+</div><!-- end .secondary-content -->

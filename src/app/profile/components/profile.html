@@ -1,0 +1,158 @@
+<section class="secondary-content" *ngIf="profileService.set">
+    <div class="container">
+        <div class="c-content-title-2">
+            <h3 class="c-center c-font-uppercase c-font-bold">{{ profileService.profile.organizerName }}</h3>
+            <div class="c-line c-dot c-dot-square c-theme-bg c-theme-bg-after"></div>
+            <p class="c-center c-font-lowercase">{{ profileService.profile.tagLine }}</p>
+        </div>
+        <div class="row">
+            <div class="col-md-3" style="padding: 20px; background-color: #f9f9f9; font-size: 15px;">
+                <!-- BEGIN: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
+                <div class="c-content-ver-nav c-margin-b-40">
+                    <div class="c-content-title-1 c-theme c-title-md c-margin-b-10">
+                        <h3 class="c-font-bold c-font-uppercase c-margin-b-5">
+                            Profile
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <img [src]="profileService.profile.imageURL" class="img-fluid">
+                        </div>
+                    </div>
+                    <div class="row c-margin-t-10 text-center">
+                        <div class="col-md-12">
+                            <!-- <div class="row">
+                                <div class="col-md-12">
+                                    <img src="../../../assets/images/flags/US-flag.png" class="img-fluid" style="max-width: 30px; margin: auto;">
+                                </div>
+                            </div> -->
+                            <div class="row c-margin-t-5">
+                                <div class="col-md-12">
+                                    <p>{{ profileService.contact.city }}, {{ profileService.contact.state }}</p>
+                                </div>
+                            </div>
+                            <!-- <div class="row c-margin-t-5">
+                                <div class="col-md-12">
+                                    <p><strong>Rank:</strong> Super Deluxe Quadruple Diamond</p>
+                                </div>
+                            </div> -->
+                            <!-- <div class="row c-margin-t-5">
+                                <div class="col-md-12">
+                                    <p><strong>4</strong> upcoming events</p>
+                                </div>
+                            </div>
+                            <div class="row c-margin-t-5">
+                                <div class="col-md-12">
+                                    <p><strong>110</strong> events created</p>
+                                </div>
+                            </div> -->
+                            <div class="row c-margin-t-5">
+                              <div class="col-md-12">
+                                <p>ōcode: <strong>{{ ocode }}</strong></p>
+                              </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row c-margin-t-10">
+                        <div class="col-md-12" *ngIf="auth.id != id && !followed">
+                            <a (click)="follow()" target="blank" class="btn btn-block c-theme-btn c-btn-bold c-btn-uppercase">
+                                <span aria-hidden="true" class="icon-plus"></span>
+                                Follow
+                            </a>
+                        </div>
+                        <div class="col-md-12 text-center" *ngIf="followed && auth.id != id">
+                            <strong>
+                                <i class="fa fa-check" style="color:forestgreen"></i> Following
+                            </strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="c-content-ver-nav c-margin-b-40">
+
+                    <div class="c-contentAbout Me-title-1 c-theme c-title-md c-margin-b-10">
+                        <h3 class="c-font-bold c-font-uppercase c-margin-b-5">
+                                About Me
+                        </h3>
+                    </div>
+                    <span class="item" *ngIf="profileService.profile.includeEmail">
+
+                                    <a (click)="email()" style="word-break: break-all;">
+                                        <span aria-hidden="true" class="fa fa-envelope-o"></span> &nbsp;{{ profileService.contact.email }} </a>
+
+                        <br>
+                                </span>
+                    <span class="item" *ngIf="profileService.profile.includePhone">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="fa fa-phone"></span> &nbsp;{{ profileService.contact.phone }} </a>
+                                </span>
+                    <p class="c-margin-t-10" style="font-size: 14px">
+                        {{ profileService.profile.aboutMe }}
+                    </p>
+
+                </div>
+                <div class="c-content-ver-nav c-margin-b-40" *ngIf="profileService.socials">
+                    <div class="c-content-title-1 c-theme c-title-md c-margin-t-40" *ngIf="profileService.socials.facebookToggle || profileService.socials.twitterToggle || profileService.socials.googlePlusToggle || profileService.socials.linkedInToggle">
+                        <h3 class="c-font-bold c-font-uppercase c-margin-b-5">
+                            Social Media
+                        </h3>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3" *ngIf="profileService.socials.facebookToggle">
+                            <a [href]="'https://'+profileService.socials.facebook" target="_blank" class="socicon-btn socicon-btn-circle socicon-solid c-theme-bg c-font-white c-bg-red-hover tooltips" data-original-title="Facebook">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-3" *ngIf="profileService.socials.twitterToggle">
+                            <a [href]="'https://'+profileService.socials.twitter" target="_blank" class="socicon-btn socicon-btn-circle socicon-solid c-theme-bg c-font-white c-bg-red-hover tooltips" data-original-title="Twitter">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-3" *ngIf="profileService.socials.googlePlus">
+                            <a [href]="'https://'+profileService.socials.googlePlus" target="_blank" class="socicon-btn socicon-btn-circle socicon-solid c-theme-bg c-font-white c-bg-red-hover tooltips" data-original-title="Google+">
+                                <i class="fa fa-google-plus"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-3" *ngIf="profileService.socials.linkedInToggle">
+                            <a [href]="'https://'+profileService.socials.linkedIn" target="_blank" class="socicon-btn socicon-btn-circle socicon-solid c-theme-bg c-font-white c-bg-red-hover tooltips" data-original-title="LinkedIn">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 padding-vertical">
+                            <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 100%; height: 500px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="collection:539487832448843776" title="Twitter Timeline"></iframe> <script async="" src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        </div>
+                    </div>
+                </div>
+                <!-- END: CONTENT/BLOG/BLOG-SIDEBAR-1 -->
+            </div>
+            <div class="col-md-9">
+                <div style="margin-left: 20px">
+                    <div class="c-content-title-1">
+                        <h3 class="c-left c-font-uppercase">Upcoming Events</h3>
+                        <div class="c-line-left c-theme-bg"></div>
+                    </div>
+                    <!-- BEGIN: PAGE CONTENT -->
+                    <div class="c-margin-t-20"></div>
+
+                    <horizontal-card *ngFor="let event of profileService.upcomingEvents$ | async" [id]="event.$key"></horizontal-card>
+
+                    <h4 *ngIf="!profileService.upcomingTotal" style="border:0">No upcoming events</h4>
+
+                    <div class="row" *ngIf="profileService.upcomingTotal">
+                        <div class="col-md-4 col-md-offset-4">
+                            <a target="blank" class="btn btn-primary btn-sm" (click)="setLimit(50)">View More</a>
+                        </div>
+                    </div>
+                    <!-- END: PAGE CONTENT -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</section>
+
+<section class="secondary-content" *ngIf="four04">
+  <h2 style="text-align: center">Page not Found</h2>
+</section>

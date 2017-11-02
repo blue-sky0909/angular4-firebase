@@ -1,0 +1,28 @@
+<h3 class="second-tier">Event Reminder Email</h3>
+
+<div *ngIf="advancedService.eventSet">
+    <div *ngIf="localSet">
+        <ui-switch size="small" [(ngModel)]="EventReminder.enabled"></ui-switch>
+
+        <span class="shift-up-5">
+            &nbsp; Enable Event Reminder Email
+            <i class="fa fa-info-circle" placement="right" ngbTooltip="Help text" title="help text"></i>
+        </span>
+    </div>
+
+
+    <div class="padding-vertical">
+        <label>Event Reminder Email Subject</label>
+        <input type="text" class="form-control" [(ngModel)]="EventReminder.subject" />
+    </div>
+
+    <div>
+        <label>Event Reminder Email Body</label>
+        <div id="toolbar"></div>
+        <div id="editor" style="min-height: 230px;"></div>
+    </div>
+
+    <div class="padding-vertical">
+        <button class="btn btn-primary btn-lg" (click)="save()">Save</button>
+    </div>
+</div>

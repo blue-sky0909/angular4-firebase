@@ -1,0 +1,15 @@
+<div ngbModalContainer>
+    <div class="modal-body" style="padding:8%;padding-bottom:30px;" >
+
+        <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()" style="margin:15px 3px;"><span aria-hidden="true">×</span></button>
+
+        <h3 class="line">
+            Email {{ emailService.toName}}
+        </h3>
+
+        <p style="color:#ededed">{{ emailService.toEmail }}</p>
+
+        <direct-email></direct-email>
+
+    </div>
+</div>

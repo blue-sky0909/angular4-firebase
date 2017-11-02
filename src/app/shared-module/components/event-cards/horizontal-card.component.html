@@ -1,0 +1,30 @@
+<div class="c-margin-b-40" *ngIf="set">
+    <div class="row c-content-product-2 c-bg-white">
+        <div class="col-md-4">
+            <div class="c-content-overlay">
+                <div class="c-overlay-wrapper">
+                    <div class="c-overlay-content">
+                        <a (click)="gotoEvent()" target="blank" class="btn btn-primary-outline">View</a>
+                    </div>
+                </div>
+                <div  [style.background-image]="'url(' + event.imagePath + ')'" class="c-bg-img-center c-overlay-object" data-height="height" style="height: 200px; "></div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="c-info-list">
+                <h3 class="c-title c-font-bold c-font-22 c-font-dark">
+                    <a (click)="toggleBookmark()" [ngClass]="{'bookmarked':bookmarkSet}" class="horiz-bookmark">
+                        <i class="fa fa-bookmark-o" *ngIf="!bookmarkSet"></i>
+                        <i class="fa fa-bookmark" *ngIf="bookmarkSet"></i>
+                    </a>
+                    {{ event.title }}
+                </h3>
+                <p class="c-desc c-font-16 c-font-thin c-margin-b-10"><i>{{ event.descriptionText }}</i></p>
+                <p class="c-desc c-font-16 c-margin-b-10"><strong>{{ event.location }}</strong></p>
+                <p class="c-desc c-font-16 c-margin-b-10"><strong>{{ event.date }}</strong> | {{ event.time }}</p>
+                <p class="c-desc c-font-16 c-margin-b-10">{{ event.ticketsLeft }}/{{ event.totalTickets }} spots remaining</p>
+
+            </div>
+        </div>
+    </div>
+</div>
