@@ -1,5 +1,5 @@
 # Oevent2
-This app is to create and manage event.
+This app creates events and manages them.
 
 ## Technologies.
 
