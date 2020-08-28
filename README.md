@@ -1,6 +1,12 @@
 # Oevent2
+This app is to create and manage event.
 
-I have used Angular4, Firebase, Angular-CLI,Karma and Typescript.
+## Technologies.
+
+Angular 4,
+Typescript
+Firebase,
+Karma
 
 ## Development server
 
